@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x + 1</title>
+    <link rel="stylesheet" href="3x+1.css">
+
+</head>
+<body>
+<h2>The Collatz Conjecture</h2>
+<h4>or 3x + 1</h4>
+<p> Hello everyone, in this website I will be showing you the wonderful problem of 3x + 1. Basically, this is a mathematical algorithm that says,
+    if you have an even number, you <strong>divide it by 2</strong>. If you get an odd number, you <strong>times it by 3 and add 1</strong>. The
+    numbers will always eventually get to 1, however, there is no proof for this.
+</p>
+<button class="btn" onclick="main()"><strong>Click this to check a number</strong></button>
+<br><br>
+<button class="btn_2" onclick="getting_to_1()"><strong>Click here if you want to see how your number got to 1</strong></button>
+<div id="output"></div>
+
+<script>
+function main() {
+    let steps = 0;
+//Reference to the Div to show the output
+    const outputDiv = document.getElementById('output');
+
+    const number = parseInt(prompt("What number do you want to check?"), 10);
+    if (isNaN(number) || number <= 0) {
+        alert("Please enter a valid positive integer.");
+        return;
+    }
+
+    let i = number;
+
+    while (i > 1) {
+        if (i % 2 === 0) {
+            i = i / 2;
+        } else {
+            i = 3 * i + 1;
+        }
+        steps += 1;
+    }
+
+    outputDiv.innerHTML = `
+            <p><strong>Starting Number:</strong> ${number}</p>
+            <p><strong>Number of Steps:</strong> ${steps}</p>
+            <p><strong>Ratio of Number to Steps:</strong> ${number / steps} : 1</p>
+        `;
+}
+
+</script>
+
+
+<p>If you want to dive deeper into the topic, here is a video by one of my favourite Youtubers about how the Collatz Conjecture works.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/094y1Z2wpJg?si=hBxorYIi5IdVNs8y" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</body>
+</html>
