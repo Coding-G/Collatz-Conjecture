@@ -14,13 +14,29 @@
     if you have an even number, you <strong>divide it by 2</strong>. If you get an odd number, you <strong>times it by 3 and add 1</strong>. The
     numbers will always eventually get to 1, however, there is no proof for this.
 </p>
+
+
+<style> 
+    #btn_2 {
+        display: none;
+    }
+</style>
 <button class="btn" onclick="main()"><strong>Click this to check a number</strong></button>
 <br><br>
-<button class="btn_2" onclick="getting_to_1()"><strong>Click here if you want to see how your number got to 1</strong></button>
+<button class="btn_2" id="btn_2" onclick="getting_to_1()"><strong>Click here if you want to see how your number got to 1</strong></button>
+<!-- THE DIVS!!!!!!!!!!!!   -->
+<br>
+<div class="div" id ="gettingThere"></div>
 <div id="output"></div>
 
+
+
+
 <script>
+let ifVisible = 0
+let listOfNumbers = [];
 function main() {
+    listOfNumbers = [];
     let steps = 0;
 //Reference to the Div to show the output
     const outputDiv = document.getElementById('output');
@@ -30,15 +46,16 @@ function main() {
         alert("Please enter a valid positive integer.");
         return;
     }
-
     let i = number;
-
+    listOfNumbers.push(i)
+//The actual thing. The algorithm of 3x + 1
     while (i > 1) {
         if (i % 2 === 0) {
             i = i / 2;
         } else {
             i = 3 * i + 1;
         }
+        listOfNumbers.push(i);
         steps += 1;
     }
 
@@ -47,8 +64,29 @@ function main() {
             <p><strong>Number of Steps:</strong> ${steps}</p>
             <p><strong>Ratio of Number to Steps:</strong> ${number / steps} : 1</p>
         `;
-}
 
+
+const btn_2 = document.getElementById('btn_2');
+btn_2.style.display = 'inline-block';
+
+
+}
+//second button
+function getting_to_1() {
+    ifVisible += 1;
+    const second_div = document.getElementById('gettingThere');
+    second_div.innerHTML = `
+        <p><strong>${listOfNumbers.join(', ')}</strong></p>
+    `;
+    //check if pressed twice or not
+    if (ifVisible % 2 === 0){
+        gettingThere.style.display = 'none';
+    }else{
+        gettingThere.style.display = 'inline-block';
+    }
+    console.log(ifVisible);
+
+}
 </script>
 
 

@@ -21,14 +21,19 @@ body {
 
 .btn_2 {
     font-family: 'Courier New', Courier, monospace;
-    padding: 10px 20px;
+    padding: 12px 22px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     background-color: #ea7b77;
     border: #7788ea;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+
+}
+
+.div {
+    font-size: 15px;
 
 }
